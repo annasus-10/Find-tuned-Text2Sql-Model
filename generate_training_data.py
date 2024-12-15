@@ -138,7 +138,11 @@ class Text2SqlSampleGenerator:
                 "content": """You are an expert at generating diverse, realistic natural language queries 
                 for a university course database. Generate a unique, student-like query that could 
                 be used to extract information from the database. Consider different ways a student 
-                might ask about courses, majors, prerequisites, and course details."""
+                might ask about courses, majors, prerequisites, and course details.
+
+                Guidelines:
+                - The queries should be from a perspective of a typical student asking about their course ouline.
+                - Only return the natural language queries, without any additional explanation or introduction in front or after."""
             },
             {
                 "role": "user", 
@@ -152,11 +156,7 @@ class Text2SqlSampleGenerator:
                 Elective options: {context.get('elective_options', 'N/A')}
                 Required Major Electives: {context.get('required_major_electives', 'N/A')}
                 
-                Provide a query that a typical student might ask about their courses or academic requirements.
-
-                Guidelines:
-                - The queries should be from a perspective of a typical student asking about their course ouline.
-                - Only return the natural language questions, without any additional explanation"""
+                Provide a query that a typical student might ask about their courses or academic requirements."""
             }
         ]
         return self.generate_with_ollama(messages)
@@ -179,7 +179,7 @@ class Text2SqlSampleGenerator:
             
             if nlq and sql_query:
                 sample = {
-                    "instruction": f"You are a powerful text-to-SQL model. Your task is to generate SQL queries based on the following schema:\n\n{schema}",
+                    "instruction": f"You are a powerful text-to-SQL model. Your task is to generate SQL queries based on the given schema.",
                     "input": nlq,
                     "output": sql_query
                 }
@@ -205,8 +205,8 @@ class Text2SqlSampleGenerator:
 if __name__ == "__main__":
     # Replace with your actual PostgreSQL connection details
     db_params = {
-        "dbname": "vme_chatbot",
-        "user": "readonlyuser",
+        "dbname": "your_database",
+        "user": "your_username",
         "password": "your_password",
         "host": "localhost",
         "port": "5432"
