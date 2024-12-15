@@ -148,13 +148,20 @@ class Text2SqlSampleGenerator:
                 Course Name: {context.get('course_name', 'N/A')}
                 Year: {context.get('year', 'N/A')}
                 Semester: {context.get('semester', 'N/A')}
+                Prerequisite courses: {context.get('prerequisite_courses', 'N/A')}
+                Elective options: {context.get('elective_options', 'N/A')}
+                Required Major Electives: {context.get('required_major_electives', 'N/A')}
                 
-                Provide a query that a typical student might ask about their courses or academic requirements."""
+                Provide a query that a typical student might ask about their courses or academic requirements.
+
+                Guidelines:
+                - The queries should be from a perspective of a typical student asking about their course ouline.
+                - Only return the natural language questions, without any additional explanation"""
             }
         ]
         return self.generate_with_ollama(messages)
 
-    def generate_samples(self, num_samples=500):
+    def generate_samples(self, num_samples=5):
         # Get database schema
         schema = self.get_database_schema()
         
