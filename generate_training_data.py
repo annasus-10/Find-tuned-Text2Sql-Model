@@ -161,7 +161,7 @@ class Text2SqlSampleGenerator:
         ]
         return self.generate_with_ollama(messages)
 
-    def generate_samples(self, num_samples=5):
+    def generate_samples(self, num_samples=500):
         # Get database schema
         schema = self.get_database_schema()
         
@@ -205,8 +205,8 @@ class Text2SqlSampleGenerator:
 if __name__ == "__main__":
     # Replace with your actual PostgreSQL connection details
     db_params = {
-        "dbname": "your_database",
-        "user": "your_username",
+        "dbname": "vme_chatbot",
+        "user": "readonlyuser",
         "password": "your_password",
         "host": "localhost",
         "port": "5432"
@@ -214,7 +214,7 @@ if __name__ == "__main__":
 
     # Generate and save samples
     generator = Text2SqlSampleGenerator(db_params, ollama_model='llama3')
-    samples = generator.generate_samples(5)
+    samples = generator.generate_samples(500)
     generator.save_samples(samples)
 
     print(f"Generated {len(samples)} text-to-SQL samples and saved to samples.json")
