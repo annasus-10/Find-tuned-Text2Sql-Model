@@ -205,8 +205,8 @@ class Text2SqlSampleGenerator:
 if __name__ == "__main__":
     # Replace with your actual PostgreSQL connection details
     db_params = {
-        "dbname": "vme_chatbot",
-        "user": "readonlyuser",
+        "dbname": "your_db_name",
+        "user": "your_username",
         "password": "your_password",
         "host": "localhost",
         "port": "5432"
