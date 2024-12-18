@@ -1,7 +1,3 @@
-Here's a **README** file with the details you provided. You can copy and paste this into your `README.md` file for your repository:
-
----
-
 # Fine-tuned Text2SQL Model
 
 ## Overview
